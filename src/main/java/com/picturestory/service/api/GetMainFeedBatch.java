@@ -18,6 +18,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
+import static com.picturestory.service.Configs.MAX_LIMIT;
+
 /**
  * Created by krish on 04/07/2016.
  */
@@ -95,8 +97,6 @@ public class GetMainFeedBatch {
                     contentJSON.put(Constants.PICTURE_URL,content.getPictureUrl());
                     contentJSON.put(Constants.PLACE,content.getPlace());
                     contentJSON.put(Constants.DATE,content.getDate());
-                    contentJSON.put(Constants.PICTURE_DESCRIPTION,content.getPictureDescription());
-                    contentJSON.put(Constants.PICTURE_SUMMARY,content.getPictureSummary());
                     contentJSON.put(Constants.EDITORS_PICK,content.isEditorsPick());
 
                     //set if liked by user
@@ -121,12 +121,11 @@ public class GetMainFeedBatch {
 
                     //Add storyList
                     JSONArray storyJSONArray = new JSONArray();
-                    List<Story> storyList = mStoryDetailsDao.getStoriesForContentWithRange(content.getContentId(),0,3);
+                    List<Story> storyList = mStoryDetailsDao.getStoriesForContentWithRange(content.getContentId(),0,MAX_LIMIT);
                     for(Story story:storyList){
                         JSONObject storyObject = new JSONObject();
                         storyObject.put(Constants.STORY_ID,story.getStoryId());
                         storyObject.put(Constants.STORY_DESC,story.getStoryDesc());
-                        storyObject.put(Constants.CONTENT_ID,story.getContentId());
 
                         //Add story contributor details
                         User storyUser = (User) mUserDetailsDao.getUser(story.getUserId());
@@ -137,7 +136,7 @@ public class GetMainFeedBatch {
                             storyCreatorJSON.put(Constants.DESCRIPTION,storyUser.getUserDesc());
                             storyCreatorJSON.put(Constants.IMAGE_URL,storyUser.getUserImage());
                             storyCreatorJSON.put(Constants.FOLLOWED_BY_USER, isPersonFollowedByUser(userId, storyUser.getUserId()));
-                            storyObject.put(Constants.PERSON_DETAILS, storyCreatorJSON);
+                            storyObject.put(Constants.AUTHOR_DETAILS, storyCreatorJSON);
                         }
 
                         //add story like count and is story liked by user

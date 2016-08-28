@@ -57,4 +57,11 @@ public class Main {
             return ;
         }
     }
+
+    public static String getBaseURI(){
+        String localIp = System.getenv("AWS_PRIVATE_IPV4");
+        String base_uri = "http://"+localIp+":4056/";
+        System.out.println(base_uri);
+        return base_uri;
+    }
 }

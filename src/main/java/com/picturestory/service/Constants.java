@@ -5,8 +5,8 @@ package com.picturestory.service;
  */
 public class Constants {
 
-    public static final String DB_SELECT_ENDPOINT = "http://localhost:8983/solr/pixtoryNewContent/select";
-    public static final String DB_UPDATE_ENDPOINT = "http://localhost:8983/solr/pixtoryNewContent/update?commit=true ";
+    public static final String DB_SELECT_ENDPOINT = "http://localhost:8983/solr/pixtoryContentShortStroies/select";
+    public static final String DB_UPDATE_ENDPOINT = "http://localhost:8983/solr/pixtoryContentShortStroies/update?commit=true ";
 
     //Solr params
     public static final String SUCCESS = "success";
@@ -29,6 +29,7 @@ public class Constants {
     public static final int ERRORCODE_IOEXCEPTION = 102;
     public static final int ERRORCODE_INVALID_INPUT = 103;
     public static final int ERRORCODE_JSON_EXCEPTION = 101;
+    public static final int ERRORCODE_INVALID_USER_STORY = 104;
     public static final String ACCEPT_CHARSET = "Accept-Charset";
     public static final String ERROR_MESSAGE = "errorMessage";
     public static final String NUMFOUND = "numFound";
@@ -84,6 +85,7 @@ public class Constants {
     public static final String DOWNLOADED_BY_USER = "downloadedByUser";
     public static final String FULLCOUNT = "fullCount";
     public static final String PERSON_DETAILS="personDetails";
+    public static final String AUTHOR_DETAILS="authorDetails";
     public static final String USER_DETAILS="userDetails";
     public static final String PERSON_LIST="personList";
     public static final String CONTENT_LIST = "contentList";
@@ -94,6 +96,7 @@ public class Constants {
     public static final String NUMBER_OF_USERS = "numberOfUsers";
     public static final String PNF_DATA = "pNfData";
     public static final String CONTENT = "content";
+    public static final String STORY_DETAILS = "storyDetails";
     public static final String STORY_ID = "storyId";
     public static final String STORY_DESC = "storyDescription";
     public static final String STORY_LIKED_USER_ID = "storyLikedUserId";
@@ -116,7 +119,7 @@ public class Constants {
     public static final String INVALID_REQUEST = "Invalid request body";
     public static final String INVALID_GCMID = "Invalid gcmId";
     public static final String INVALID_FEEDBACK = "Invalid feedBack";
-
+    public static final String INVALID_USER_STORY_CONTENT = "User already has a story for this content";
     public static final String INVALID_MESSAGE = "Invalid message";
     public static final String INVALID_STORY_ID = "Invalid Story Id";
 }
